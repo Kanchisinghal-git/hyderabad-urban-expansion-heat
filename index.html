@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyderabad | Urban Expansion, Tree-Classified Loss & Surface Heat</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="eyebrow">GEOSPATIAL RESEARCH · HYDERABAD, INDIA · 2018–2025</div>
+    <h1>Urban expansion, tree-classified change & surface heat</h1>
+    <p>Explore where built-up expansion and tree-classified loss are concentrated, alongside observed land surface temperature change.</p>
+  </header>
+  <main class="layout">
+    <section class="map-panel" aria-label="Interactive map">
+      <div class="map-toolbar">
+        <label for="layer-select">Map layer</label>
+        <select id="layer-select">
+          <option value="built">New built-up area (%)</option>
+          <option value="trees">Tree-classified loss (%)</option>
+          <option value="lst">Land surface temperature change (°C)</option>
+        </select>
+      </div>
+      <div id="map"></div>
+      <div class="map-footer">Click a grid cell to inspect its values. Missing LST observations are shown as unavailable, not zero.</div>
+    </section>
+    <aside class="side-panel">
+      <div class="panel-kicker">MAP GUIDE</div>
+      <h2 id="legend-title">New built-up area (%)</h2>
+      <div id="legend" class="legend"></div>
+      <div class="note">
+        <h3>How to read this map</h3>
+        <p id="layer-description">The share of each grid cell classified as new built-up area between 2018 and 2025.</p>
+      </div>
+      <div class="note">
+        <h3>About the analysis</h3>
+        <p>Annual Dynamic World classifications for January–April were compared within a consistent GHMC study boundary. Land surface temperature (LST) is a satellite-derived surface measure, not air temperature.</p>
+      </div>
+      <div class="note caution">
+        <h3>Interpretation</h3>
+        <p>Dynamic World’s “trees” class is not the same as legally or ecologically defined forest cover. Spatial associations do not establish causation.</p>
+      </div>
+      <div class="cell-card" id="cell-card">
+        <h3>Selected grid cell</h3>
+        <p class="muted">Select a grid cell on the map to see its measurements.</p>
+      </div>
+    </aside>
+  </main>
+  <footer>Research project · Hyderabad, India · 2018–2025</footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
