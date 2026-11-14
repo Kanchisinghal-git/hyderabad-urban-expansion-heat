@@ -341,3 +341,88 @@ footer {
     padding: 18px;
   }
 }
+
+/* =====================================
+   INTERACTIVE RESEARCH METRIC CARDS
+===================================== */
+
+.metric {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.metric small {
+  display: block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.metric:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(30, 55, 45, 0.10);
+}
+
+.metric:focus-visible {
+  outline: 3px solid #9bbdb3;
+  outline-offset: 3px;
+}
+
+/* Detail panel */
+
+.metric-detail {
+  position: relative;
+  max-width: 1250px;
+  margin: 20px 0 0;
+  padding: 26px 55px 26px 26px;
+  background: #ffffff;
+  border: 1px solid #dce5df;
+  border-left: 4px solid #477d69;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(30, 55, 45, 0.06);
+}
+
+.metric-detail[hidden] {
+  display: none;
+}
+
+.metric-detail h3 {
+  margin: 0 0 14px;
+  color: #24483b;
+  font-size: 19px;
+}
+
+.metric-detail p {
+  line-height: 1.7;
+  color: #52635b;
+  font-size: 14px;
+}
+
+.metric-detail ul {
+  padding-left: 21px;
+  line-height: 1.9;
+  color: #52635b;
+  font-size: 14px;
+}
+
+#close-metric {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  color: #52635b;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#close-metric:hover {
+  color: #24483b;
+}
