@@ -426,3 +426,63 @@ footer {
 #close-metric:hover {
   color: #24483b;
 }
+
+/* RESEARCH MAP GALLERY */
+
+.research-gallery {
+  max-width: 1450px;
+  margin: 42px auto;
+  padding: 0 24px;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  color: #24483b;
+  font-size: 26px;
+  margin: 10px 0;
+}
+
+.section-heading p {
+  color: #63736b;
+  line-height: 1.7;
+  max-width: 780px;
+}
+
+.research-figure {
+  margin: 0;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+}
+
+.research-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.research-figure figcaption {
+  margin-top: 13px;
+  color: #68766e;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .research-gallery {
+    padding: 0 14px;
+  }
+
+  .section-heading h2 {
+    font-size: 21px;
+  }
+
+  .research-figure {
+    padding: 8px;
+  }
+}
