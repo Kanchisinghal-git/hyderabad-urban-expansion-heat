@@ -1,28 +1,155 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Hyderabad | Urban Expansion, Tree-Classified Loss & Surface Heat</title>
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Research map interpretation section */
+
+    .map-interpretation {
+      max-width: 1250px;
+      margin: 38px auto 55px;
+      padding: 34px;
+      background: #f7f9f6;
+      border: 1px solid #e1e8e1;
+      border-radius: 12px;
+    }
+
+    .map-interpretation .eyebrow {
+      color: #648575;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .map-interpretation h2 {
+      color: #24483b;
+      font-size: 27px;
+      margin: 12px 0;
+    }
+
+    .map-interpretation p {
+      color: #596a61;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .interpretation-intro {
+      margin-bottom: 28px;
+    }
+
+    .interpretation-item {
+      padding: 23px 0;
+      border-top: 1px solid #dfe7e0;
+    }
+
+    .interpretation-item h3 {
+      color: #315d4b;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .interpretation-item p {
+      margin-bottom: 12px;
+    }
+
+    .map-caution {
+      background: #edf2ed;
+      border-left: 4px solid #789b87;
+      padding: 18px 22px;
+      margin-top: 20px;
+    }
+
+    .map-caution strong {
+      color: #315d4b;
+    }
+
+    .map-caution p {
+      margin-bottom: 0;
+    }
+
+    .map-legend-explanation {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .legend-explanation-card {
+      background: #fff;
+      border: 1px solid #e1e8e1;
+      border-radius: 10px;
+      padding: 19px;
+    }
+
+    .legend-explanation-card h4 {
+      color: #315d4b;
+      font-size: 15px;
+      margin: 0 0 9px;
+    }
+
+    .legend-explanation-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .interpretation-highlight {
+      font-weight: 700;
+      color: #315d4b;
+    }
+
+    @media(max-width: 600px) {
+      .map-interpretation {
+        padding: 20px;
+        margin: 25px 12px 40px;
+      }
+
+      .map-interpretation h2 {
+        font-size: 23px;
+      }
+
+      .interpretation-item h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
 
+  <!-- HEADER -->
+
   <header class="site-header">
-    <div class="eyebrow">GEOSPATIAL RESEARCH · HYDERABAD, INDIA · 2018–2025</div>
+
+    <div class="eyebrow">
+      GEOSPATIAL RESEARCH · HYDERABAD, INDIA · 2018–2025
+    </div>
+
     <h1>Urban expansion, tree-classified change & surface heat</h1>
+
     <p>
       Explore where built-up expansion and tree-classified loss are concentrated,
       alongside observed land surface temperature change.
     </p>
+
   </header>
+
+
+  <!-- PROJECT INTRODUCTION -->
 
   <section class="project-intro">
 
     <div class="intro-content">
+
       <div class="eyebrow">RESEARCH PROJECT · URBAN ENVIRONMENT</div>
 
       <h2>Understanding Hyderabad's changing urban landscape</h2>
@@ -48,7 +175,9 @@
         urban environmental change and their implications for
         climate-sensitive urban planning.
       </p>
+
     </div>
+
 
     <!-- INTERACTIVE RESEARCH METRICS -->
 
@@ -80,99 +209,339 @@
 
     </div>
 
-    <!-- DETAILS APPEAR WHEN A METRIC IS CLICKED -->
+
+    <!-- METRIC DETAIL PANEL -->
 
     <div id="metric-detail" class="metric-detail" hidden>
-      <button id="close-metric" type="button" aria-label="Close details">×</button>
+
+      <button id="close-metric" type="button" aria-label="Close details">
+        ×
+      </button>
+
       <div id="metric-detail-content"></div>
+
     </div>
 
   </section>
 
 
-<section class="research-gallery">
 
-  <div class="section-heading">
-    <div class="eyebrow">SPATIAL ANALYSIS · RESEARCH OUTPUTS</div>
+  <!-- RESEARCH MAP -->
 
-    <h2>Mapping Hyderabad's environmental transformation</h2>
+  <section class="research-gallery">
 
-    <p>
-      A comparative spatial assessment of urban expansion,
-      tree-classified loss and land surface temperature change
-      between 2018 and 2025.
-    </p>
-  </div>
+    <div class="section-heading">
 
-  <figure class="research-figure">
-    <img
-      src="https://raw.githubusercontent.com/kanchisinghal-git/hyderabad-urban-expansion-heat/main/Hyderabad_Final_Research_Maps.png"
-      alt="Three-panel research map showing new built-up area, tree-classified loss and land surface temperature change in Hyderabad"
-      loading="eager"
-      decoding="async"
-      style="display:block; width:100%; height:auto; max-width:100%;"
-    >
+      <div class="eyebrow">
+        SPATIAL ANALYSIS · RESEARCH OUTPUTS
+      </div>
 
-    <figcaption>
-      Figure 1. Spatial distribution of new built-up area,
-      tree-classified loss and land surface temperature change
-      across Hyderabad, 2018–2025.
-    </figcaption>
-  </figure>
+      <h2>Mapping Hyderabad's environmental transformation</h2>
 
-</section>
+      <p>
+        A comparative spatial assessment of urban expansion,
+        tree-classified loss and land surface temperature change
+        between 2018 and 2025.
+      </p>
+
+    </div>
 
 
-  <div class="section-heading">
-    <div class="eyebrow">SPATIAL ANALYSIS · RESEARCH OUTPUTS</div>
+    <figure class="research-figure">
 
-    <h2>Mapping Hyderabad's environmental transformation</h2>
+      <img
+        src="https://raw.githubusercontent.com/kanchisinghal-git/hyderabad-urban-expansion-heat/main/Hyderabad_Final_Research_Maps.png"
+        alt="Three-panel research map showing new built-up area, tree-classified loss and land surface temperature change in Hyderabad"
+        loading="eager"
+        decoding="async"
+        style="display:block; width:100%; height:auto; max-width:100%;"
+      >
 
-    <p>
-      A comparative spatial assessment of urban expansion,
-      tree-classified loss and land surface temperature change
-      between 2018 and 2025.
-    </p>
-  </div>
+      <figcaption>
+        Figure 1. Spatial distribution of new built-up area,
+        tree-classified loss and land surface temperature change
+        across Hyderabad, 2018–2025.
+      </figcaption>
 
-  <figure class="research-figure">
-    <img
-     src="Hyderabad_Final_Research_Maps.png"
-      alt="Three-panel research map showing new built-up area, tree-classified loss and land surface temperature change in Hyderabad"
-      loading="lazy"
-    >
+    </figure>
 
-    <figcaption>
-      Figure 1. Spatial distribution of new built-up area,
-      tree-classified loss and land surface temperature change
-      across Hyderabad, 2018–2025.
-    </figcaption>
-  </figure>
 
-</section>
+
+    <!-- WRITTEN MAP INTERPRETATION -->
+
+    <div class="map-interpretation">
+
+      <div class="eyebrow">
+        UNDERSTANDING THE MAP · KEY OBSERVATIONS
+      </div>
+
+      <h2>What do these spatial patterns tell us?</h2>
+
+      <p class="interpretation-intro">
+        The three maps provide a comparative view of urban expansion,
+        tree-classified loss and land surface temperature change across
+        Hyderabad between 2018 and 2025. The maps use a common spatial
+        framework to show how these environmental changes vary
+        geographically across individual grid cells.
+      </p>
+
+
+      <!-- COLOUR LEGEND EXPLANATION -->
+
+      <h3>How to read the three maps</h3>
+
+      <div class="map-legend-explanation">
+
+        <div class="legend-explanation-card">
+
+          <h4>New built-up area (%)</h4>
+
+          <p>
+            The blue colour scale represents the percentage of each
+            grid cell classified as newly built-up. Darker blue
+            indicates a higher percentage, while lighter blue
+            indicates a lower percentage.
+          </p>
+
+        </div>
+
+
+        <div class="legend-explanation-card">
+
+          <h4>Tree-classified loss (%)</h4>
+
+          <p>
+            The yellow-to-orange colour scale represents the percentage
+            of each grid cell experiencing tree-classified loss.
+            Darker shades indicate a higher percentage of loss.
+          </p>
+
+        </div>
+
+
+        <div class="legend-explanation-card">
+
+          <h4>LST change (°C)</h4>
+
+          <p>
+            The diverging blue-red colour scale represents the
+            difference in observed land surface temperature.
+            Blue indicates negative change, red indicates positive
+            change, and values near white indicate relatively
+            little change.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- INTERPRETATION 1 -->
+
+      <div class="interpretation-item">
+
+        <h3>01 · Urban expansion is spatially uneven</h3>
+
+        <p>
+          The first map represents the percentage of each grid cell
+          classified as newly built-up during the study period.
+          Darker blue cells indicate a greater share of new built-up
+          area, whereas lighter cells indicate lower shares.
+        </p>
+
+        <p>
+          The map shows that urban expansion is not distributed
+          uniformly across the study boundary. Instead, higher
+          percentages of new built-up area occur in selected grid
+          cells, while other locations display relatively limited
+          change.
+        </p>
+
+        <p>
+          Across the study area, gross new built-up expansion
+          amounts to approximately
+          <span class="interpretation-highlight">36.24 km²</span>.
+          The transition analysis indicates that cropland and
+          shrub/scrub were important previous land-cover categories
+          converted to built-up area.
+        </p>
+
+      </div>
+
+
+
+      <!-- INTERPRETATION 2 -->
+
+      <div class="interpretation-item">
+
+        <h3>02 · Tree-classified loss varies across locations</h3>
+
+        <p>
+          The second map illustrates the percentage of each grid
+          cell that transitioned out of the trees classification.
+          Darker yellow and orange shades indicate a higher
+          proportion of tree-classified loss.
+        </p>
+
+        <p>
+          Much of the study area displays relatively low percentages
+          of loss, alongside scattered cells with higher values.
+          This suggests that the spatial distribution of
+          tree-classified loss is uneven rather than uniform
+          across Hyderabad.
+        </p>
+
+        <p>
+          Approximately <strong>17.75 km²</strong> of
+          tree-classified area was lost on a gross basis.
+          However, approximately <strong>10.75 km²</strong>
+          was also newly classified as trees.
+          After accounting for these gains, the net decrease
+          was approximately <strong>7.00 km²</strong>.
+        </p>
+
+      </div>
+
+
+
+      <!-- INTERPRETATION 3 -->
+
+      <div class="interpretation-item">
+
+        <h3>03 · Surface temperature change is spatially heterogeneous</h3>
+
+        <p>
+          The third map displays the difference in observed
+          land surface temperature between the two comparison
+          periods. Blue cells represent negative temperature
+          differences, red cells represent positive differences,
+          and lighter cells represent values closer to zero.
+        </p>
+
+        <p>
+          The map reveals considerable spatial variation,
+          with areas of both increasing and decreasing
+          surface temperature. This indicates that observed
+          surface temperature change is not spatially
+          uniform across the study area.
+        </p>
+
+        <p>
+          The class-wise analysis provides an additional
+          perspective. Areas experiencing tree-classified
+          loss recorded an average LST change of
+          <strong>+0.98°C</strong>, whereas new built-up
+          areas recorded an average change of
+          <strong>−0.03°C</strong>.
+        </p>
+
+      </div>
+
+
+
+      <!-- INTERPRETATION 4 -->
+
+      <div class="interpretation-item">
+
+        <h3>04 · Reading the three maps together</h3>
+
+        <p>
+          Considered together, the three maps provide a spatial
+          perspective on the distribution of urban expansion,
+          tree-classified loss and surface temperature change.
+          Their comparison helps identify locations where
+          different forms of environmental change may overlap.
+        </p>
+
+        <p>
+          These overlapping patterns provide an opportunity
+          for further investigation into the geographical
+          relationship between urban development, changes
+          in vegetation classification and surface thermal
+          conditions.
+        </p>
+
+        <p>
+          The findings can help identify locations that may
+          warrant closer examination through local spatial
+          statistics and targeted urban environmental monitoring.
+        </p>
+
+      </div>
+
+
+
+      <!-- IMPORTANT RESEARCH CAVEATS -->
+
+      <div class="map-caution">
+
+        <strong>Important interpretation and methodological notes</strong>
+
+        <p>
+          The first two maps display percentages within individual
+          grid cells, not absolute areas. The third map represents
+          land surface temperature (LST), not air temperature.
+          Dynamic World's trees category is a satellite-derived
+          land-cover classification and should not automatically
+          be interpreted as legally or ecologically defined forest.
+        </p>
+
+        <p>
+          The class-wise temperature results describe observed
+          spatial associations and do not establish that
+          tree-classified loss or urban expansion caused
+          temperature changes. Differences in the number and
+          availability of valid satellite observations should
+          also be considered when interpreting LST results.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- INTERACTIVE MAP -->
 
   <main class="layout">
 
     <section class="map-panel" aria-label="Interactive map">
 
       <div class="map-toolbar">
+
         <label for="layer-select">Map layer</label>
 
         <select id="layer-select">
+
           <option value="built">New built-up area (%)</option>
+
           <option value="trees">Tree-classified loss (%)</option>
+
           <option value="lst">Land surface temperature change (°C)</option>
+
         </select>
+
       </div>
+
 
       <div id="map"></div>
 
+
       <div class="map-footer">
+
         Click a grid cell to inspect its values.
         Missing LST observations are shown as unavailable, not zero.
+
       </div>
 
     </section>
+
+
+
+    <!-- MAP GUIDE -->
 
     <aside class="side-panel">
 
@@ -182,63 +551,97 @@
 
       <div id="legend" class="legend"></div>
 
+
       <div class="note">
+
         <h3>How to read this map</h3>
+
         <p id="layer-description">
           The share of each grid cell classified as new built-up area
           between 2018 and 2025.
         </p>
+
       </div>
 
+
       <div class="note">
+
         <h3>About the analysis</h3>
+
         <p>
           Annual Dynamic World classifications for January–April were
           compared within a consistent GHMC study boundary.
           Land surface temperature (LST) is a satellite-derived
           surface measure, not air temperature.
         </p>
+
       </div>
 
+
       <div class="note caution">
+
         <h3>Interpretation</h3>
+
         <p>
           Dynamic World's "trees" class is not the same as legally
           or ecologically defined forest cover.
           Spatial associations do not establish causation.
         </p>
+
       </div>
 
+
       <div class="cell-card" id="cell-card">
+
         <h3>Selected grid cell</h3>
+
         <p class="muted">
           Select a grid cell on the map to see its measurements.
         </p>
+
       </div>
 
     </aside>
 
   </main>
 
+
+
+  <!-- FOOTER -->
+
   <footer>
+
     Research project · Hyderabad, India · 2018–2025
+
   </footer>
 
+
+
+  <!-- JAVASCRIPT LIBRARIES -->
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <script src="script.js"></script>
+
+
 
   <!-- INTERACTIVE METRIC DETAILS -->
 
   <script>
+
     const metricDetails = {
 
       builtup: {
+
         title: "Gross new built-up area",
+
         html: `
           <p>
-            Between 2018 and 2025, approximately <strong>36.24 km²</strong>
-            of land was newly classified as built-up in the study area.
+            Between 2018 and 2025, approximately
+            <strong>36.24 km²</strong> of land was newly
+            classified as built-up in the study area.
           </p>
+
           <ul>
             <li>Gross inflow into the built-up class: 36.242 km².</li>
             <li>Built-up area outflow: approximately 9.225 km².</li>
@@ -247,43 +650,56 @@
             <li>Shrub/scrub-to-built transition: 9.704 km².</li>
             <li>Trees-to-built transition: 8.199 km².</li>
           </ul>
+
           <p>
             These figures distinguish gross land-cover transitions
             from the net change in built-up area.
           </p>
         `
+
       },
 
+
       trees: {
+
         title: "Gross tree-classified loss",
+
         html: `
           <p>
-            Approximately <strong>17.75 km²</strong> of area classified
-            as trees in the earlier observation was no longer classified
-            as trees in the later observation.
+            Approximately <strong>17.75 km²</strong> of area
+            classified as trees in the earlier observation was
+            no longer classified as trees in the later observation.
           </p>
+
           <ul>
             <li>Gross tree-classified loss: 17.752 km².</li>
             <li>Tree-classified gain: 10.749 km².</li>
             <li>Net decrease: approximately 7.003 km².</li>
             <li>Trees-to-built transition: 8.199 km².</li>
           </ul>
+
           <p>
-            Important: Dynamic World's trees class is a satellite
+            Dynamic World's trees class is a satellite
             land-cover classification. It should not automatically
             be interpreted as legally or ecologically defined forest loss.
           </p>
         `
+
       },
 
+
       grid: {
+
         title: "Spatial analysis grid",
+
         html: `
           <p>
-            The study uses an approximately <strong>1 km spatial grid</strong>
-            to examine the geographical distribution of land-cover
+            The study uses an approximately
+            <strong>1 km spatial grid</strong> to examine
+            the geographical distribution of land-cover
             and temperature changes.
           </p>
+
           <ul>
             <li>Grid cells provide a consistent spatial unit for comparison.</li>
             <li>Each cell contains measurements of built-up gain,
@@ -291,36 +707,49 @@
             <li>Spatial statistical methods help identify clustering
                 and local concentrations of change.</li>
           </ul>
+
           <p>
-            The interactive map allows individual grid-cell measurements
-            to be inspected.
+            The interactive map allows individual grid-cell
+            measurements to be inspected.
           </p>
         `
+
       },
 
+
       period: {
+
         title: "Study period: 2018–2025",
+
         html: `
           <p>
             The research compares satellite-derived observations
             from <strong>2018 to 2025</strong> to investigate
             changes in Hyderabad's urban landscape.
           </p>
+
           <ul>
             <li>Land-cover comparisons use January–April observations.</li>
             <li>Land surface temperature is derived from Landsat observations.</li>
             <li>Spatial analysis examines the distribution and clustering
                 of changes across the study area.</li>
           </ul>
+
           <p>
-            The number of valid temperature observations differs between
-            years. Therefore, annual LST values should be interpreted
-            cautiously and not treated as a long-term climate trend.
+            The number of valid temperature observations differs
+            between years. Therefore, annual LST values should be
+            interpreted cautiously and not treated as a long-term
+            climate trend.
           </p>
         `
+
       }
 
     };
+
+
+
+    /* OPEN METRIC DETAILS */
 
     document.querySelectorAll(".metric[data-metric]").forEach(card => {
 
@@ -346,10 +775,18 @@
 
     });
 
+
+
+    /* CLOSE METRIC DETAILS */
+
     document.getElementById("close-metric").addEventListener("click", () => {
+
       document.getElementById("metric-detail").hidden = true;
+
     });
+
   </script>
 
 </body>
+
 </html>
