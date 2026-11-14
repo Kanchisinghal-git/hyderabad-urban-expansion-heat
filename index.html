@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,101 +8,286 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <header class="site-header">
     <div class="eyebrow">GEOSPATIAL RESEARCH · HYDERABAD, INDIA · 2018–2025</div>
     <h1>Urban expansion, tree-classified change & surface heat</h1>
-    <p>Explore where built-up expansion and tree-classified loss are concentrated, alongside observed land surface temperature change.</p>
+    <p>
+      Explore where built-up expansion and tree-classified loss are concentrated,
+      alongside observed land surface temperature change.
+    </p>
   </header>
-  
-<section class="project-intro">
-  <div class="intro-content">
-    <div class="eyebrow">RESEARCH PROJECT · URBAN ENVIRONMENT</div>
 
-    <h2>Understanding Hyderabad's changing urban landscape</h2>
+  <section class="project-intro">
 
-    <p>
-      Hyderabad has experienced substantial urban expansion,
-      transforming its land-cover composition and spatial
-      landscape. This project examines the relationship between
-      urban growth, changes in tree-classified areas and
-      land surface temperature between 2018 and 2025.
-    </p>
+    <div class="intro-content">
+      <div class="eyebrow">RESEARCH PROJECT · URBAN ENVIRONMENT</div>
 
-    <p>
-      Using satellite-derived land-cover classifications,
-      Landsat observations and spatial statistical techniques,
-      the study investigates land-cover transitions,
-      geographical clustering and variations in surface
-      temperature across the city.
-    </p>
+      <h2>Understanding Hyderabad's changing urban landscape</h2>
 
-    <p>
-      The objective is to understand the spatial patterns of
-      urban environmental change and their implications for
-      climate-sensitive urban planning.
-    </p>
-  </div>
+      <p>
+        Hyderabad has experienced substantial urban expansion,
+        transforming its land-cover composition and spatial landscape.
+        This project examines the relationship between urban growth,
+        changes in tree-classified areas and land surface temperature
+        between 2018 and 2025.
+      </p>
 
-  <div class="research-metrics">
-    <div class="metric">
-      <strong>36.24 km²</strong>
-      <span>Gross new built-up area</span>
+      <p>
+        Using satellite-derived land-cover classifications,
+        Landsat observations and spatial statistical techniques,
+        the study investigates land-cover transitions,
+        geographical clustering and variations in surface temperature
+        across the city.
+      </p>
+
+      <p>
+        The objective is to understand the spatial patterns of
+        urban environmental change and their implications for
+        climate-sensitive urban planning.
+      </p>
     </div>
 
-    <div class="metric">
-      <strong>17.75 km²</strong>
-      <span>Gross tree-classified loss</span>
+    <!-- INTERACTIVE RESEARCH METRICS -->
+
+    <div class="research-metrics">
+
+      <button class="metric" type="button" data-metric="builtup">
+        <strong>36.24 km²</strong>
+        <span>Gross new built-up area</span>
+        <small>Explore the result ↗</small>
+      </button>
+
+      <button class="metric" type="button" data-metric="trees">
+        <strong>17.75 km²</strong>
+        <span>Gross tree-classified loss</span>
+        <small>Explore the result ↗</small>
+      </button>
+
+      <button class="metric" type="button" data-metric="grid">
+        <strong>1 km</strong>
+        <span>Spatial analysis grid</span>
+        <small>Explore the method ↗</small>
+      </button>
+
+      <button class="metric" type="button" data-metric="period">
+        <strong>2018–2025</strong>
+        <span>Study period</span>
+        <small>Explore the study ↗</small>
+      </button>
+
     </div>
 
-    <div class="metric">
-      <strong>1 km</strong>
-      <span>Spatial analysis grid</span>
+    <!-- DETAILS APPEAR WHEN A METRIC IS CLICKED -->
+
+    <div id="metric-detail" class="metric-detail" hidden>
+      <button id="close-metric" type="button" aria-label="Close details">×</button>
+      <div id="metric-detail-content"></div>
     </div>
 
-    <div class="metric">
-      <strong>2018–2025</strong>
-      <span>Study period</span>
-    </div>
-  </div>
-</section>
+  </section>
+
   <main class="layout">
+
     <section class="map-panel" aria-label="Interactive map">
+
       <div class="map-toolbar">
         <label for="layer-select">Map layer</label>
+
         <select id="layer-select">
           <option value="built">New built-up area (%)</option>
           <option value="trees">Tree-classified loss (%)</option>
           <option value="lst">Land surface temperature change (°C)</option>
         </select>
       </div>
+
       <div id="map"></div>
-      <div class="map-footer">Click a grid cell to inspect its values. Missing LST observations are shown as unavailable, not zero.</div>
+
+      <div class="map-footer">
+        Click a grid cell to inspect its values.
+        Missing LST observations are shown as unavailable, not zero.
+      </div>
+
     </section>
+
     <aside class="side-panel">
+
       <div class="panel-kicker">MAP GUIDE</div>
+
       <h2 id="legend-title">New built-up area (%)</h2>
+
       <div id="legend" class="legend"></div>
+
       <div class="note">
         <h3>How to read this map</h3>
-        <p id="layer-description">The share of each grid cell classified as new built-up area between 2018 and 2025.</p>
+        <p id="layer-description">
+          The share of each grid cell classified as new built-up area
+          between 2018 and 2025.
+        </p>
       </div>
+
       <div class="note">
         <h3>About the analysis</h3>
-        <p>Annual Dynamic World classifications for January–April were compared within a consistent GHMC study boundary. Land surface temperature (LST) is a satellite-derived surface measure, not air temperature.</p>
+        <p>
+          Annual Dynamic World classifications for January–April were
+          compared within a consistent GHMC study boundary.
+          Land surface temperature (LST) is a satellite-derived
+          surface measure, not air temperature.
+        </p>
       </div>
+
       <div class="note caution">
         <h3>Interpretation</h3>
-        <p>Dynamic World’s “trees” class is not the same as legally or ecologically defined forest cover. Spatial associations do not establish causation.</p>
+        <p>
+          Dynamic World's "trees" class is not the same as legally
+          or ecologically defined forest cover.
+          Spatial associations do not establish causation.
+        </p>
       </div>
+
       <div class="cell-card" id="cell-card">
         <h3>Selected grid cell</h3>
-        <p class="muted">Select a grid cell on the map to see its measurements.</p>
+        <p class="muted">
+          Select a grid cell on the map to see its measurements.
+        </p>
       </div>
+
     </aside>
+
   </main>
-  <footer>Research project · Hyderabad, India · 2018–2025</footer>
+
+  <footer>
+    Research project · Hyderabad, India · 2018–2025
+  </footer>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
+
+  <!-- INTERACTIVE METRIC DETAILS -->
+
+  <script>
+    const metricDetails = {
+
+      builtup: {
+        title: "Gross new built-up area",
+        html: `
+          <p>
+            Between 2018 and 2025, approximately <strong>36.24 km²</strong>
+            of land was newly classified as built-up in the study area.
+          </p>
+          <ul>
+            <li>Gross inflow into the built-up class: 36.242 km².</li>
+            <li>Built-up area outflow: approximately 9.225 km².</li>
+            <li>Net built-up increase: approximately 27.019 km².</li>
+            <li>Crops-to-built transition: 13.380 km².</li>
+            <li>Shrub/scrub-to-built transition: 9.704 km².</li>
+            <li>Trees-to-built transition: 8.199 km².</li>
+          </ul>
+          <p>
+            These figures distinguish gross land-cover transitions
+            from the net change in built-up area.
+          </p>
+        `
+      },
+
+      trees: {
+        title: "Gross tree-classified loss",
+        html: `
+          <p>
+            Approximately <strong>17.75 km²</strong> of area classified
+            as trees in the earlier observation was no longer classified
+            as trees in the later observation.
+          </p>
+          <ul>
+            <li>Gross tree-classified loss: 17.752 km².</li>
+            <li>Tree-classified gain: 10.749 km².</li>
+            <li>Net decrease: approximately 7.003 km².</li>
+            <li>Trees-to-built transition: 8.199 km².</li>
+          </ul>
+          <p>
+            Important: Dynamic World's trees class is a satellite
+            land-cover classification. It should not automatically
+            be interpreted as legally or ecologically defined forest loss.
+          </p>
+        `
+      },
+
+      grid: {
+        title: "Spatial analysis grid",
+        html: `
+          <p>
+            The study uses an approximately <strong>1 km spatial grid</strong>
+            to examine the geographical distribution of land-cover
+            and temperature changes.
+          </p>
+          <ul>
+            <li>Grid cells provide a consistent spatial unit for comparison.</li>
+            <li>Each cell contains measurements of built-up gain,
+                tree-classified loss and LST change.</li>
+            <li>Spatial statistical methods help identify clustering
+                and local concentrations of change.</li>
+          </ul>
+          <p>
+            The interactive map allows individual grid-cell measurements
+            to be inspected.
+          </p>
+        `
+      },
+
+      period: {
+        title: "Study period: 2018–2025",
+        html: `
+          <p>
+            The research compares satellite-derived observations
+            from <strong>2018 to 2025</strong> to investigate
+            changes in Hyderabad's urban landscape.
+          </p>
+          <ul>
+            <li>Land-cover comparisons use January–April observations.</li>
+            <li>Land surface temperature is derived from Landsat observations.</li>
+            <li>Spatial analysis examines the distribution and clustering
+                of changes across the study area.</li>
+          </ul>
+          <p>
+            The number of valid temperature observations differs between
+            years. Therefore, annual LST values should be interpreted
+            cautiously and not treated as a long-term climate trend.
+          </p>
+        `
+      }
+
+    };
+
+    document.querySelectorAll(".metric[data-metric]").forEach(card => {
+
+      card.addEventListener("click", () => {
+
+        const detail = metricDetails[card.dataset.metric];
+
+        if (!detail) return;
+
+        const panel = document.getElementById("metric-detail");
+
+        document.getElementById("metric-detail-content").innerHTML =
+          `<h3>${detail.title}</h3>${detail.html}`;
+
+        panel.hidden = false;
+
+        panel.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+
+      });
+
+    });
+
+    document.getElementById("close-metric").addEventListener("click", () => {
+      document.getElementById("metric-detail").hidden = true;
+    });
+  </script>
+
 </body>
 </html>
