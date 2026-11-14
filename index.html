@@ -466,260 +466,111 @@
   </section>
 
 
-<!-- ================= RESULTS DASHBOARD ================= -->
 
-<section class="results-dashboard">
+<!-- COMPACT LAND-COVER TRANSITION CHART -->
 
-  <div class="section-heading">
-    <div class="eyebrow">QUANTITATIVE FINDINGS · 2018–2025</div>
-    <h2>What does the analysis reveal?</h2>
-    <p>
-      Descriptive statistics and spatial statistics reveal the
-      scale, distribution and clustering of urban expansion
-      and tree-classified loss across Hyderabad.
-    </p>
+<section class="transition-section">
+
+  <div class="transition-heading">
+    <div class="eyebrow">LAND-COVER TRANSITIONS · 2018–2025</div>
+    <h2>Sources of new built-up area</h2>
+    <p>Previous land-cover categories converted to built-up area.</p>
   </div>
 
-  <div class="results-grid">
-
-    <div class="chart-card">
-      <h3>01 · Sources of new built-up area</h3>
-      <p>Previous land-cover categories converted to built-up area.</p>
-      <canvas id="transitionChart"></canvas>
-      <small>Area in km² · Gross transitions</small>
-    </div>
-
-    <div class="chart-card">
-      <h3>02 · Tree-classified area change</h3>
-      <p>Gross tree-classified loss compared with gross gain.</p>
-      <canvas id="treeChangeChart"></canvas>
-      <small>Area in km² · 2018–2025</small>
-    </div>
-
-    <div class="chart-card">
-      <h3>03 · Global Moran's I</h3>
-      <p>
-        Both variables show positive and statistically
-        significant spatial autocorrelation.
-      </p>
-      <canvas id="moranChart"></canvas>
-      <small>999 permutations · Pseudo p-value = 0.001</small>
-    </div>
-
-    <div class="chart-card">
-      <h3>04 · LISA cluster classification</h3>
-      <p>Distribution of local spatial association categories.</p>
-      <canvas id="lisaChart"></canvas>
-      <small>Number of grid cells · 771 observations</small>
-    </div>
-
-    <div class="chart-card chart-card-wide">
-      <h3>05 · Getis-Ord Gi* hotspot analysis</h3>
-      <p>
-        Number of statistically identified hotspot,
-        coldspot and non-significant grid cells.
-      </p>
-      <canvas id="giChart"></canvas>
-      <small>Number of grid cells · 771 observations</small>
-    </div>
-
-  </div>
-
-  <div class="statistical-note">
-    <h3>Interpreting the spatial statistics</h3>
-    <p>
-      Global Moran's I measures whether similar values tend to
-      occur near one another across the study area. LISA
-      identifies local clusters and spatial outliers, while
-      Getis-Ord Gi* identifies statistically significant
-      concentrations of high or low values.
-    </p>
-    <p>
-      A positive Moran's I indicates positive spatial
-      autocorrelation. It does not, by itself, identify the
-      locations of individual hotspots or establish causation.
+  <div class="transition-chart-card">
+    <canvas id="transitionChart"></canvas>
+    <p class="chart-caption">
+      Area converted to built-up (km²). Values represent gross
+      land-cover transitions.
     </p>
   </div>
 
 </section>
 
-<!-- CHART.JS LIBRARY -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const commonOptions = {
-    responsive: true,
-    maintainAspectRatio: true,
-    plugins: {
-      legend: {
-        position: "bottom"
-      }
-    }
-  };
+  const chartCanvas = document.getElementById("transitionChart");
 
-  // 1. Land-cover transitions
-  new Chart(document.getElementById("transitionChart"), {
-    type: "bar",
-    data: {
-      labels: [
-        "Cropland",
-        "Shrub / scrub",
-        "Trees",
-        "Bare ground",
-        "Water"
-      ],
-      datasets: [{
-        label: "Area converted to built-up (km²)",
-        data: [13.380, 9.704, 8.199, 3.609, 1.297],
-        backgroundColor: [
-          "#6B8E75",
-          "#B6A16A",
-          "#438A78",
-          "#B5A18A",
-          "#7099B5"
-        ]
-      }]
-    },
-    options: {
-      ...commonOptions,
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "Area (km²)"
+  if (chartCanvas) {
+    new Chart(chartCanvas, {
+      type: "bar",
+      data: {
+        labels: [
+          "Cropland",
+          "Shrub / scrub",
+          "Trees",
+          "Bare ground",
+          "Water"
+        ],
+        datasets: [{
+          label: "Area (km²)",
+          data: [13.380, 9.704, 8.199, 3.609, 1.297],
+          backgroundColor: [
+            "#668875",
+            "#b7a16c",
+            "#438a78",
+            "#b5a18a",
+            "#7099b5"
+          ],
+          borderRadius: 4,
+          barThickness: 17
+        }]
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.raw.toFixed(3) + " km²";
+              }
+            }
           }
-        }
-      }
-    }
-  });
-
-  // 2. Tree-classified change
-  new Chart(document.getElementById("treeChangeChart"), {
-    type: "bar",
-    data: {
-      labels: ["Gross loss", "Gross gain", "Net decrease"],
-      datasets: [{
-        label: "Area (km²)",
-        data: [17.752, 10.749, 7.003],
-        backgroundColor: ["#D98B42", "#6D9B72", "#A65C45"]
-      }]
-    },
-    options: {
-      ...commonOptions,
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "Area (km²)"
-          }
-        }
-      }
-    }
-  });
-
-  // 3. Global Moran's I
-  new Chart(document.getElementById("moranChart"), {
-    type: "bar",
-    data: {
-      labels: ["Built-up gain", "Tree-classified loss"],
-      datasets: [{
-        label: "Global Moran's I",
-        data: [0.3458, 0.1956],
-        backgroundColor: ["#477C9C", "#C28A48"]
-      }]
-    },
-    options: {
-      ...commonOptions,
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "Moran's I"
-          }
-        }
-      }
-    }
-  });
-
-  // 4. LISA cluster categories
-  new Chart(document.getElementById("lisaChart"), {
-    type: "bar",
-    data: {
-      labels: [
-        "Not significant",
-        "Low-Low",
-        "High-High",
-        "Low-High",
-        "High-Low"
-      ],
-      datasets: [
-        {
-          label: "Built-up gain",
-          data: [550, 160, 53, 8, 0],
-          backgroundColor: "#477C9C"
         },
-        {
-          label: "Tree-classified loss",
-          data: [582, 132, 39, 15, 3],
-          backgroundColor: "#C28A48"
-        }
-      ]
-    },
-    options: {
-      ...commonOptions,
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "Number of grid cells"
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: {
+              color: "#edf0ed"
+            },
+            title: {
+              display: true,
+              text: "Area (km²)"
+            },
+            ticks: {
+              font: {
+                size: 11
+              }
+            }
+          },
+          y: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              font: {
+                size: 12
+              }
+            }
           }
         }
       }
-    }
-  });
-
-  // 5. Getis-Ord Gi* results
-  new Chart(document.getElementById("giChart"), {
-    type: "bar",
-    data: {
-      labels: ["Hotspots", "Coldspots", "Not significant"],
-      datasets: [
-        {
-          label: "Built-up gain",
-          data: [60, 175, 536],
-          backgroundColor: "#477C9C"
-        },
-        {
-          label: "Tree-classified loss",
-          data: [58, 160, 553],
-          backgroundColor: "#C28A48"
-        }
-      ]
-    },
-    options: {
-      ...commonOptions,
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "Number of grid cells"
-          }
-        }
-      }
-    }
-  });
+    });
+  }
 
 });
 </script>
 
-<!-- ================= END RESULTS DASHBOARD ================= -->
+<!-- END COMPACT LAND-COVER TRANSITION CHART -->
+
 
   <!-- INTERACTIVE MAP -->
 
