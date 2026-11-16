@@ -1,7 +1,6 @@
 
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +11,6 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Research map interpretation section */
-
     .map-interpretation {
       max-width: 1250px;
       margin: 38px auto 55px;
@@ -101,27 +98,146 @@
       font-size: 13px;
     }
 
-    .interpretation-highlight {
+    .transition-section {
+      max-width: 1100px;
+      margin: 45px auto 60px;
+      padding: 0 24px;
+    }
+
+    .transition-heading {
+      margin-bottom: 20px;
+    }
+
+    .transition-heading .eyebrow {
+      color: #648575;
+      font-size: 11px;
       font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .transition-heading h2 {
+      color: #24483b;
+      margin: 10px 0;
+    }
+
+    .transition-heading p {
+      color: #596a61;
+      font-size: 14px;
+    }
+
+    .transition-chart-card {
+      background: #fff;
+      border: 1px solid #e1e8e1;
+      border-radius: 12px;
+      padding: 25px;
+      height: 330px;
+    }
+
+    .transition-chart-card canvas {
+      max-height: 260px;
+    }
+
+    .chart-caption {
+      color: #718078;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .lisa-section {
+      max-width: 1250px;
+      margin: 38px auto 55px;
+      padding: 34px;
+      background: #f7f9f6;
+      border: 1px solid #e1e8e1;
+      border-radius: 12px;
+    }
+
+    .lisa-section .eyebrow {
+      color: #648575;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .lisa-section h2 {
+      color: #24483b;
+      font-size: 27px;
+      margin: 12px 0;
+    }
+
+    .lisa-section p {
+      color: #596a61;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .lisa-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .lisa-stat-card {
+      background: #fff;
+      border: 1px solid #e1e8e1;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .lisa-stat-card h3 {
       color: #315d4b;
+      font-size: 15px;
+      margin: 0 0 10px;
+    }
+
+    .lisa-stat-card strong {
+      display: block;
+      color: #315d4b;
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .lisa-stat-card p {
+      margin: 3px 0;
+      font-size: 13px;
+    }
+
+    .lisa-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .lisa-figure figcaption {
+      color: #718078;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 12px;
     }
 
     @media(max-width: 600px) {
-      .map-interpretation {
+      .map-interpretation,
+      .lisa-section {
         padding: 20px;
         margin: 25px 12px 40px;
       }
 
-      .map-interpretation h2 {
+      .map-interpretation h2,
+      .lisa-section h2 {
         font-size: 23px;
       }
 
       .interpretation-item h3 {
         font-size: 16px;
       }
+
+      .transition-chart-card {
+        padding: 15px;
+      }
     }
   </style>
-
 </head>
 
 <body>
@@ -129,7 +245,6 @@
   <!-- HEADER -->
 
   <header class="site-header">
-
     <div class="eyebrow">
       GEOSPATIAL RESEARCH · HYDERABAD, INDIA · 2018–2025
     </div>
@@ -140,14 +255,12 @@
       Explore where built-up expansion and tree-classified loss are concentrated,
       alongside observed land surface temperature change.
     </p>
-
   </header>
 
 
   <!-- PROJECT INTRODUCTION -->
 
   <section class="project-intro">
-
     <div class="intro-content">
 
       <div class="eyebrow">RESEARCH PROJECT · URBAN ENVIRONMENT</div>
@@ -175,11 +288,10 @@
         urban environmental change and their implications for
         climate-sensitive urban planning.
       </p>
-
     </div>
 
 
-    <!-- INTERACTIVE RESEARCH METRICS -->
+    <!-- RESEARCH METRICS -->
 
     <div class="research-metrics">
 
@@ -213,24 +325,21 @@
     <!-- METRIC DETAIL PANEL -->
 
     <div id="metric-detail" class="metric-detail" hidden>
-
       <button id="close-metric" type="button" aria-label="Close details">
         ×
       </button>
 
       <div id="metric-detail-content"></div>
-
     </div>
 
   </section>
 
 
-  <!-- SINGLE RESEARCH MAP -->
+  <!-- RESEARCH MAP -->
 
   <section class="research-gallery">
 
     <div class="section-heading">
-
       <div class="eyebrow">
         SPATIAL ANALYSIS · RESEARCH OUTPUTS
       </div>
@@ -242,12 +351,10 @@
         tree-classified loss and land surface temperature change
         between 2018 and 2025.
       </p>
-
     </div>
 
 
     <figure class="research-figure">
-
       <img
         src="https://raw.githubusercontent.com/kanchisinghal-git/hyderabad-urban-expansion-heat/main/Hyderabad_Final_Research_Maps.png"
         alt="Three-panel research map showing new built-up area, tree-classified loss and land surface temperature change in Hyderabad"
@@ -261,7 +368,6 @@
         tree-classified loss and land surface temperature change
         across Hyderabad, 2018–2025.
       </figcaption>
-
     </figure>
 
 
@@ -286,28 +392,20 @@
       </p>
 
 
-      <!-- COLOUR SCALE EXPLANATION -->
-
       <div class="map-legend-explanation">
 
         <div class="legend-explanation-card">
-
           <h4>Panel 1 · New built-up area (%)</h4>
-
           <p>
             The blue scale runs from 0 to 100%. A darker blue cell has a
             larger percentage of its area newly classified as built-up;
             a pale cell has a smaller percentage. This is a within-cell
             percentage, not the total built-up area of the whole city.
           </p>
-
         </div>
 
-
         <div class="legend-explanation-card">
-
           <h4>Panel 2 · Tree-classified loss (%)</h4>
-
           <p>
             The yellow-to-orange scale also runs from 0 to 100%. Darker
             orange cells have a larger percentage of their area transitioning
@@ -315,14 +413,10 @@
             land-cover classification, not a direct measure of legally
             notified or ecologically defined forest loss.
           </p>
-
         </div>
 
-
         <div class="legend-explanation-card">
-
           <h4>Panel 3 · LST change (°C)</h4>
-
           <p>
             This diverging scale shows the difference in observed land
             surface temperature. Red represents a positive difference
@@ -330,16 +424,12 @@
             negative difference (lower LST), and values near white are
             closer to zero. LST is surface temperature, not air temperature.
           </p>
-
         </div>
 
       </div>
 
 
-      <!-- BUILT-UP EXPANSION -->
-
       <div class="interpretation-item">
-
         <h3>01 · Built-up expansion</h3>
 
         <p>
@@ -359,14 +449,10 @@
           newly built-up pixels; they are not additional to the
           36.242 km² total.
         </p>
-
       </div>
 
 
-      <!-- TREE-CLASSIFIED LOSS -->
-
       <div class="interpretation-item">
-
         <h3>02 · Tree-classified loss</h3>
 
         <p>
@@ -384,14 +470,10 @@
           of both the tree-loss and built-up-transition results. It must
           not be added to those totals as if it were a separate area.
         </p>
-
       </div>
 
 
-      <!-- LAND SURFACE TEMPERATURE -->
-
       <div class="interpretation-item">
-
         <h3>03 · Land surface temperature differences</h3>
 
         <p>
@@ -411,14 +493,10 @@
           the class-wise results can differ because they summarise
           different groups of locations.
         </p>
-
       </div>
 
 
-      <!-- COMBINED INTERPRETATION -->
-
       <div class="interpretation-item">
-
         <h3>04 · What the three panels show together</h3>
 
         <p>
@@ -431,20 +509,14 @@
         </p>
 
         <p>
-          The project's spatial-statistical results, including Global
-          Moran's I, Local Moran's I (LISA) and Getis-Ord Gi*, provide
-          additional tests of clustering and local concentration.
-          Those statistics should be interpreted separately from the
-          colour patterns in this descriptive map.
+          The spatial-statistical analysis is presented separately below.
+          Global Moran's I summarises overall spatial autocorrelation,
+          while the LISA maps identify local clusters and spatial outliers.
         </p>
-
       </div>
 
 
-      <!-- LIMITATIONS -->
-
       <div class="map-caution">
-
         <strong>Important limitations</strong>
 
         <p>
@@ -458,7 +530,6 @@
           describe mapped changes and spatial associations; they do
           not establish causation.
         </p>
-
       </div>
 
     </div>
@@ -466,189 +537,232 @@
   </section>
 
 
+  <!-- ONLY RETAINED CHART: SOURCES OF NEW BUILT-UP AREA -->
 
-<!-- COMPACT LAND-COVER TRANSITION CHART -->
+  <section class="transition-section">
 
-<section class="transition-section">
+    <div class="transition-heading">
+      <div class="eyebrow">LAND-COVER TRANSITIONS · 2018–2025</div>
 
-  <div class="transition-heading">
-    <div class="eyebrow">LAND-COVER TRANSITIONS · 2018–2025</div>
-    <h2>Sources of new built-up area</h2>
-    <p>Previous land-cover categories converted to built-up area.</p>
-  </div>
+      <h2>Sources of new built-up area</h2>
 
-  <div class="transition-chart-card">
-    <canvas id="transitionChart"></canvas>
-    <p class="chart-caption">
-      Area converted to built-up (km²). Values represent gross
-      land-cover transitions.
-    </p>
-  </div>
+      <p>
+        Previous land-cover categories converted to built-up area.
+      </p>
+    </div>
 
-</section>
+    <div class="transition-chart-card">
+      <canvas id="transitionChart"></canvas>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <p class="chart-caption">
+        Area converted to built-up (km²). Values represent gross
+        land-cover transitions.
+      </p>
+    </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+  </section>
 
-  const chartCanvas = document.getElementById("transitionChart");
 
-  if (chartCanvas) {
-    new Chart(chartCanvas, {
-      type: "bar",
-      data: {
-        labels: [
-          "Cropland",
-          "Shrub / scrub",
-          "Trees",
-          "Bare ground",
-          "Water"
-        ],
-        datasets: [{
-          label: "Area (km²)",
-          data: [13.380, 9.704, 8.199, 3.609, 1.297],
-          backgroundColor: [
-            "#668875",
-            "#b7a16c",
-            "#438a78",
-            "#b5a18a",
-            "#7099b5"
-          ],
-          borderRadius: 4,
-          barThickness: 17
-        }]
-      },
-      options: {
-        indexAxis: "y",
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false
+  <!-- CHART.JS: SINGLE HORIZONTAL BAR CHART -->
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const chartCanvas = document.getElementById("transitionChart");
+
+      if (chartCanvas) {
+        new Chart(chartCanvas, {
+          type: "bar",
+
+          data: {
+            labels: [
+              "Cropland",
+              "Shrub / scrub",
+              "Trees",
+              "Bare ground",
+              "Water"
+            ],
+
+            datasets: [{
+              label: "Area (km²)",
+
+              data: [13.380, 9.704, 8.199, 3.609, 1.297],
+
+              backgroundColor: [
+                "#668875",
+                "#b7a16c",
+                "#438a78",
+                "#b5a18a",
+                "#7099b5"
+              ],
+
+              borderRadius: 4,
+              barThickness: 17
+            }]
           },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return context.raw.toFixed(3) + " km²";
+
+          options: {
+            indexAxis: "y",
+            responsive: true,
+            maintainAspectRatio: false,
+
+            plugins: {
+              legend: {
+                display: false
+              },
+
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.raw.toFixed(3) + " km²";
+                  }
+                }
+              }
+            },
+
+            scales: {
+              x: {
+                beginAtZero: true,
+
+                grid: {
+                  color: "#edf0ed"
+                },
+
+                title: {
+                  display: true,
+                  text: "Area (km²)"
+                },
+
+                ticks: {
+                  font: {
+                    size: 11
+                  }
+                }
+              },
+
+              y: {
+                grid: {
+                  display: false
+                },
+
+                ticks: {
+                  font: {
+                    size: 12
+                  }
+                }
               }
             }
           }
-        },
-        scales: {
-          x: {
-            beginAtZero: true,
-            grid: {
-              color: "#edf0ed"
-            },
-            title: {
-              display: true,
-              text: "Area (km²)"
-            },
-            ticks: {
-              font: {
-                size: 11
-              }
-            }
-          },
-          y: {
-            grid: {
-              display: false
-            },
-            ticks: {
-              font: {
-                size: 12
-              }
-            }
-          }
-        }
+        });
       }
+
     });
-  }
+  </script>
 
-});
-</script>
-
-<!-- END COMPACT LAND-COVER TRANSITION CHART -->
 
   <!-- LISA SPATIAL CLUSTER ANALYSIS -->
 
-  <section class="map-interpretation" style="max-width:1250px; margin:38px auto 55px;">
+  <section class="lisa-section">
 
-    <div class="eyebrow">SPATIAL STATISTICS · LOCAL CLUSTER ANALYSIS</div>
+    <div class="eyebrow">
+      SPATIAL STATISTICS · LOCAL CLUSTER ANALYSIS
+    </div>
 
     <h2>Where are urban expansion and tree-classified loss concentrated?</h2>
 
     <p>
-      Global Moran's I identifies whether similar values are spatially clustered
-      across the study area. Local Indicators of Spatial Association (LISA)
-      identify the locations and types of local spatial clusters.
+      Global Moran's I assesses whether similar values are spatially
+      clustered across the study area. Local Indicators of Spatial
+      Association (LISA) identify the locations and types of local
+      spatial clusters.
     </p>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px; margin:25px 0;">
 
-      <div class="legend-explanation-card">
-        <h4>Built-up expansion</h4>
-        <strong style="font-size:25px; color:#315d4b;">0.3455</strong>
+    <!-- GLOBAL MORAN'S I: TEXT FINDINGS, NOT A CHART -->
+
+    <div class="lisa-stat-grid">
+
+      <div class="lisa-stat-card">
+        <h3>Built-up expansion</h3>
+
+        <strong>0.3455</strong>
+
         <p>Global Moran's I</p>
-        <p>Z-score: 17.1243 · p = 0.001</p>
+        <p>Z-score: 17.1243</p>
+        <p>Pseudo p-value: 0.001</p>
       </div>
 
-      <div class="legend-explanation-card">
-        <h4>Tree-classified loss</h4>
-        <strong style="font-size:25px; color:#315d4b;">0.1954</strong>
+      <div class="lisa-stat-card">
+        <h3>Tree-classified loss</h3>
+
+        <strong>0.1954</strong>
+
         <p>Global Moran's I</p>
-        <p>Z-score: 10.3601 · p = 0.001</p>
+        <p>Z-score: 10.3601</p>
+        <p>Pseudo p-value: 0.001</p>
       </div>
 
     </div>
 
-    <figure class="research-figure">
+
+    <!-- LISA MAP FIGURE -->
+
+    <figure class="research-figure lisa-figure">
 
       <img
         src="https://raw.githubusercontent.com/kanchisinghal-git/hyderabad-urban-expansion-heat/main/Hyderabad_LISA_Cluster_Maps.png"
         alt="Side-by-side LISA cluster maps showing built-up expansion and tree-classified loss across Hyderabad"
         loading="lazy"
         decoding="async"
-        style="display:block; width:100%; height:auto; max-width:100%;"
       >
 
       <figcaption>
-        Figure 2. Local Indicators of Spatial Association (LISA) cluster maps
-        for built-up expansion and tree-classified area loss across Hyderabad.
-        Queen contiguity weights; significance threshold p &lt; 0.05.
+        Figure 2. Local Indicators of Spatial Association (LISA)
+        cluster maps for built-up expansion and tree-classified
+        area loss across Hyderabad. Queen contiguity weights;
+        significance threshold p &lt; 0.05.
       </figcaption>
 
     </figure>
 
-    <div class="interpretation-item">
-      <h3>01 · Built-up expansion clusters</h3>
-      <p>
-        The analysis identified 46 High-High clusters and 168 Low-Low
-        clusters among 771 grid cells. High-High locations indicate
-        concentrations of relatively high built-up expansion surrounded
-        by similarly high-valued neighbouring cells.
-      </p>
-    </div>
 
     <div class="interpretation-item">
-      <h3>02 · Tree-classified loss clusters</h3>
+      <h3>01 · Built-up expansion clusters</h3>
+
       <p>
-        The analysis identified 40 High-High clusters and 144 Low-Low
-        clusters. These locations represent concentrations of relatively
-        high tree-classified loss surrounded by similarly high-valued
+        The analysis identified <strong>46 High-High clusters</strong>
+        and <strong>168 Low-Low clusters</strong> among 771 grid cells.
+        High-High locations indicate concentrations of relatively high
+        built-up expansion surrounded by similarly high-valued
         neighbouring cells.
       </p>
     </div>
 
+
+    <div class="interpretation-item">
+      <h3>02 · Tree-classified loss clusters</h3>
+
+      <p>
+        The analysis identified <strong>40 High-High clusters</strong>
+        and <strong>144 Low-Low clusters</strong>. These locations
+        represent concentrations of relatively high tree-classified
+        loss surrounded by similarly high-valued neighbouring cells.
+      </p>
+    </div>
+
+
     <div class="interpretation-item">
       <h3>03 · Understanding local spatial patterns</h3>
+
       <p>
-        Blue areas represent Low-Low clusters, while red areas represent
-        High-High clusters. Light blue and orange identify spatial outliers
-        (Low-High and High-Low respectively). Grey areas are not statistically
-        significant at the 5% level.
+        Red areas represent High-High clusters, while blue areas
+        represent Low-Low clusters. Light blue and orange identify
+        spatial outliers (Low-High and High-Low respectively).
+        Grey areas are not statistically significant at the 5% level.
       </p>
+
       <p>
         Both variables exhibit positive and statistically significant
         global spatial autocorrelation. Built-up expansion has the
@@ -657,22 +771,24 @@ document.addEventListener("DOMContentLoaded", function () {
       </p>
     </div>
 
+
     <div class="map-caution">
       <strong>Methodological note</strong>
+
       <p>
         LISA identifies local spatial association, not causation.
-        The analysis uses Queen contiguity spatial weights after excluding
-        one isolated grid cell, leaving 771 observations. The cleaned
-        weights contain two disconnected components. Tree-classified loss
-        refers to changes in the Dynamic World trees class and should not
-        automatically be interpreted as legally or ecologically defined
-        forest loss.
+        The analysis uses Queen contiguity spatial weights after
+        excluding one isolated grid cell, leaving 771 observations.
+        The cleaned weights contain two disconnected components.
+        Tree-classified loss refers to changes in the Dynamic World
+        trees class and should not automatically be interpreted as
+        legally or ecologically defined forest loss.
       </p>
     </div>
 
   </section>
 
-  <!-- END LISA SPATIAL CLUSTER ANALYSIS -->
+
   <!-- INTERACTIVE MAP -->
 
   <main class="layout">
@@ -700,10 +816,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
       <div class="map-footer">
-
         Click a grid cell to inspect its values.
         Missing LST observations are shown as unavailable, not zero.
-
       </div>
 
     </section>
@@ -777,9 +891,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <!-- FOOTER -->
 
   <footer>
-
     Research project · Hyderabad, India · 2018–2025
-
   </footer>
 
 
@@ -821,7 +933,6 @@ document.addEventListener("DOMContentLoaded", function () {
             from the net change in built-up area.
           </p>
         `
-
       },
 
 
@@ -849,7 +960,6 @@ document.addEventListener("DOMContentLoaded", function () {
             be interpreted as legally or ecologically defined forest loss.
           </p>
         `
-
       },
 
 
@@ -878,7 +988,6 @@ document.addEventListener("DOMContentLoaded", function () {
             measurements to be inspected.
           </p>
         `
-
       },
 
 
@@ -907,7 +1016,6 @@ document.addEventListener("DOMContentLoaded", function () {
             climate trend.
           </p>
         `
-
       }
 
     };
@@ -951,5 +1059,4 @@ document.addEventListener("DOMContentLoaded", function () {
   </script>
 
 </body>
-
 </html>
