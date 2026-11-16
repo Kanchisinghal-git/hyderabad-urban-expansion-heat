@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Adaptation Plan | Research Report</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #20352e;
+      --muted: #69766f;
+      --green: #315b49;
+      --cream: #f5f3ed;
+      --paper: #fffefa;
+      --line: #dedfd6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      padding: 17px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,254,250,.9);
+    }
+
+    .brand {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .back-link {
+      font-size: 13px;
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero {
+      max-width: 1050px;
+      margin: 65px auto 35px;
+      padding: 0 25px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1.12;
+      font-weight: 600;
+      margin: 17px 0;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .metadata {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .reader-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 20px 65px;
+    }
+
+    .reader-heading {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .reader-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      margin: 0 0 8px;
+    }
+
+    .reader-heading p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .reader-shell {
+      background: #e6e5dd;
+      border: 1px solid #d5d6cd;
+      border-radius: 16px;
+      padding: 35px 20px 25px;
+      box-shadow: 0 18px 55px rgba(31, 48, 39, .09);
+    }
+
+    #book {
+      margin: 0 auto;
+    }
+
+    .page {
+      background: white;
+      overflow: hidden;
+    }
+
+    .page canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: white;
+    }
+
+    .reader-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .control-btn {
+      border: 1px solid #c9cec5;
+      background: white;
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 11px 17px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .control-btn:hover {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    .page-counter {
+      min-width: 105px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .reader-help {
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      margin: 17px 0 0;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 70px 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .error {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      color: #8a302b;
+      line-height: 1.6;
+    }
+
+    .download-row {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 7px;
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .download-btn:hover { background: #244536; }
+
+    .overview {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 20px 25px 75px;
+    }
+
+    .overview h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .overview-intro {
+      max-width: 750px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .themes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 28px;
+    }
+
+    .theme {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 22px;
+    }
+
+    .theme span {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .theme h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+      margin: 10px 0 7px;
+    }
+
+    .theme p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 25px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    @media (max-width: 650px) {
+      .hero { margin-top: 42px; }
+      .reader-shell { padding: 18px 5px; }
+      .themes { grid-template-columns: 1fr; }
+      .topbar { padding: 15px 5%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="brand">Research Portfolio</div>
+    <a class="back-link" href="../index.html">← Back to project</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Climate Policy · Adaptation · Research</div>
+      <h1>National Adaptation Planning</h1>
+      <p class="subtitle">
+        A comparative policy research report examining National Adaptation
+        Plans, India's adaptation landscape, international experiences and
+        recommendations for strengthening climate resilience.
+      </p>
+
+      <div class="metadata">
+        <span>Internship report</span>
+        <span>WWF-India · Climate and Energy Division</span>
+        <span>Prepared by Kanchi Singhal</span>
+      </div>
+    </section>
+
+    <section class="reader-section">
+      <div class="reader-heading">
+        <h2>Explore the report</h2>
+        <p>Turn the pages to read the complete internship report.</p>
+      </div>
+
+      <div class="reader-shell" id="readerShell">
+        <div id="loading" class="loading">Preparing your report reader…</div>
+        <div id="book"></div>
+        <div id="error" class="error">
+          The interactive reader could not load the PDF.
+          Please use the PDF download link below to read the report.
+        </div>
+
+        <div class="reader-controls">
+          <button class="control-btn" id="prevBtn">← Previous</button>
+          <span class="page-counter" id="pageCounter">Loading pages</span>
+          <button class="control-btn" id="nextBtn">Next →</button>
+          <button class="control-btn" id="fullscreenBtn">⛶ Full screen</button>
+        </div>
+
+        <p class="reader-help">
+          You can also use your keyboard's left and right arrow keys to turn pages.
+        </p>
+      </div>
+
+      <div class="download-row">
+        <a class="download-btn"
+           href="../Report%20on%20National%20Adaptation%20Plan-WWF.pdf"
+           target="_blank"
+           rel="noopener">
+          ↓ Download complete report (PDF)
+        </a>
+      </div>
+    </section>
+
+    <section class="overview">
+      <div class="eyebrow">About this research</div>
+      <h2>Inside the report</h2>
+      <p class="overview-intro">
+        This report was prepared during an internship with WWF-India's
+        Climate and Energy Division. It explores the evolution of National
+        Adaptation Plans, India's adaptation policy framework, international
+        experiences and opportunities to strengthen adaptation planning.
+      </p>
+
+      <div class="themes">
+        <article class="theme">
+          <span>01 · POLICY FRAMEWORK</span>
+          <h3>Evolution of National Adaptation Plans</h3>
+          <p>
+            Examines the development of NAPs, the Paris Agreement,
+            the Global Goal on Adaptation and the international
+            policy context for adaptation.
+          </p>
+        </article>
+
+        <article class="theme">
+          <span>02 · INDIA</span>
+          <h3>India's adaptation landscape</h3>
+          <p>
+            Reviews climate vulnerability, national policy priorities,
+            sectoral adaptation needs and barriers to implementation.
+          </p>
+        </article>
+
+        <article class="theme">
+          <span>03 · COMPARATIVE RESEARCH</span>
+          <h3>International experiences</h3>
+          <p>
+            Compares national adaptation planning approaches in
+            South Africa, Brazil, Pakistan and Vietnam.
+          </p>
+        </article>
+
+        <article class="theme">
+          <span>04 · RECOMMENDATIONS</span>
+          <h3>Building climate resilience</h3>
+          <p>
+            Highlights local action plans, Traditional Ecological
+            Knowledge, inclusive data, climate finance, institutional
+            capacity and Nature-based Solutions.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Research portfolio · Internship report prepared by Kanchi Singhal
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+
+  <script>
+    const PDF_URL =
+      "../Report%20on%20National%20Adaptation%20Plan-WWF.pdf";
+
+    const loading = document.getElementById("loading");
+    const errorBox = document.getElementById("error");
+    const bookElement = document.getElementById("book");
+    const counter = document.getElementById("pageCounter");
+
+    let pageFlip = null;
+
+    async function buildReader() {
+      try {
+        if (!window.pdfjsLib || !window.St || !window.St.PageFlip) {
+          throw new Error("Reader libraries did not load.");
+        }
+
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+        const pdf = await pdfjsLib.getDocument(PDF_URL).promise;
+
+        const pageElements = [];
+
+        for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+          const pdfPage = await pdf.getPage(pageNumber);
+
+          const pageElement = document.createElement("div");
+          pageElement.className = "page";
+
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+
+          const baseViewport = pdfPage.getViewport({ scale: 1 });
+          const renderScale = 1.5;
+          const viewport = pdfPage.getViewport({ scale: renderScale });
+
+          canvas.width = Math.floor(viewport.width);
+          canvas.height = Math.floor(viewport.height);
+
+          pageElement.appendChild(canvas);
+          bookElement.appendChild(pageElement);
+          pageElements.push(pageElement);
+
+          await pdfPage.render({
+            canvasContext: context,
+            viewport: viewport
+          }).promise;
+        }
+
+        loading.style.display = "none";
+
+        const firstPage = await pdf.getPage(1);
+        const dimensions = firstPage.getViewport({ scale: 1 });
+
+        const ratio = dimensions.width / dimensions.height;
+        const bookWidth = Math.min(440, Math.max(300, Math.round(620 * ratio)));
+
+        pageFlip = new St.PageFlip(bookElement, {
+          width: bookWidth,
+          height: 620,
+          size: "stretch",
+          minWidth: 280,
+          maxWidth: 550,
+          minHeight: 380,
+          maxHeight: 780,
+          showCover: true,
+          usePortrait: true,
+          drawShadow: true,
+          maxShadowOpacity: 0.35,
+          flippingTime: 850,
+          mobileScrollSupport: false,
+          autoSize: true
+        });
+
+        pageFlip.loadFromHTML(pageElements);
+
+        function updateCounter() {
+          const current = pageFlip.getCurrentPageIndex() + 1;
+          counter.textContent = `Page ${current} of ${pdf.numPages}`;
+        }
+
+        pageFlip.on("flip", updateCounter);
+        updateCounter();
+
+        document.getElementById("prevBtn").addEventListener("click", () => {
+          pageFlip.flipPrev();
+        });
+
+        document.getElementById("nextBtn").addEventListener("click", () => {
+          pageFlip.flipNext();
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "ArrowLeft") pageFlip.flipPrev();
+          if (event.key === "ArrowRight") pageFlip.flipNext();
+        });
+
+      } catch (error) {
+        console.error("Report reader error:", error);
+        loading.style.display = "none";
+        errorBox.style.display = "block";
+        counter.textContent = "PDF reader unavailable";
+      }
+    }
+
+    document.getElementById("fullscreenBtn").addEventListener("click", async () => {
+      const shell = document.getElementById("readerShell");
+
+      try {
+        if (!document.fullscreenElement) {
+          await shell.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (error) {
+        console.error("Fullscreen unavailable:", error);
+      }
+    });
+
+    buildReader();
+  </script>
+
+</body>
+</html>
