@@ -571,7 +571,108 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <!-- END COMPACT LAND-COVER TRANSITION CHART -->
 
+  <!-- LISA SPATIAL CLUSTER ANALYSIS -->
 
+  <section class="map-interpretation" style="max-width:1250px; margin:38px auto 55px;">
+
+    <div class="eyebrow">SPATIAL STATISTICS · LOCAL CLUSTER ANALYSIS</div>
+
+    <h2>Where are urban expansion and tree-classified loss concentrated?</h2>
+
+    <p>
+      Global Moran's I identifies whether similar values are spatially clustered
+      across the study area. Local Indicators of Spatial Association (LISA)
+      identify the locations and types of local spatial clusters.
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px; margin:25px 0;">
+
+      <div class="legend-explanation-card">
+        <h4>Built-up expansion</h4>
+        <strong style="font-size:25px; color:#315d4b;">0.3455</strong>
+        <p>Global Moran's I</p>
+        <p>Z-score: 17.1243 · p = 0.001</p>
+      </div>
+
+      <div class="legend-explanation-card">
+        <h4>Tree-classified loss</h4>
+        <strong style="font-size:25px; color:#315d4b;">0.1954</strong>
+        <p>Global Moran's I</p>
+        <p>Z-score: 10.3601 · p = 0.001</p>
+      </div>
+
+    </div>
+
+    <figure class="research-figure">
+
+      <img
+        src="https://raw.githubusercontent.com/kanchisinghal-git/hyderabad-urban-expansion-heat/main/Hyderabad_LISA_Cluster_Maps.png"
+        alt="Side-by-side LISA cluster maps showing built-up expansion and tree-classified loss across Hyderabad"
+        loading="lazy"
+        decoding="async"
+        style="display:block; width:100%; height:auto; max-width:100%;"
+      >
+
+      <figcaption>
+        Figure 2. Local Indicators of Spatial Association (LISA) cluster maps
+        for built-up expansion and tree-classified area loss across Hyderabad.
+        Queen contiguity weights; significance threshold p &lt; 0.05.
+      </figcaption>
+
+    </figure>
+
+    <div class="interpretation-item">
+      <h3>01 · Built-up expansion clusters</h3>
+      <p>
+        The analysis identified 46 High-High clusters and 168 Low-Low
+        clusters among 771 grid cells. High-High locations indicate
+        concentrations of relatively high built-up expansion surrounded
+        by similarly high-valued neighbouring cells.
+      </p>
+    </div>
+
+    <div class="interpretation-item">
+      <h3>02 · Tree-classified loss clusters</h3>
+      <p>
+        The analysis identified 40 High-High clusters and 144 Low-Low
+        clusters. These locations represent concentrations of relatively
+        high tree-classified loss surrounded by similarly high-valued
+        neighbouring cells.
+      </p>
+    </div>
+
+    <div class="interpretation-item">
+      <h3>03 · Understanding local spatial patterns</h3>
+      <p>
+        Blue areas represent Low-Low clusters, while red areas represent
+        High-High clusters. Light blue and orange identify spatial outliers
+        (Low-High and High-Low respectively). Grey areas are not statistically
+        significant at the 5% level.
+      </p>
+      <p>
+        Both variables exhibit positive and statistically significant
+        global spatial autocorrelation. Built-up expansion has the
+        stronger observed Moran's I value, although this is not a formal
+        statistical test of the difference between the two values.
+      </p>
+    </div>
+
+    <div class="map-caution">
+      <strong>Methodological note</strong>
+      <p>
+        LISA identifies local spatial association, not causation.
+        The analysis uses Queen contiguity spatial weights after excluding
+        one isolated grid cell, leaving 771 observations. The cleaned
+        weights contain two disconnected components. Tree-classified loss
+        refers to changes in the Dynamic World trees class and should not
+        automatically be interpreted as legally or ecologically defined
+        forest loss.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- END LISA SPATIAL CLUSTER ANALYSIS -->
   <!-- INTERACTIVE MAP -->
 
   <main class="layout">
