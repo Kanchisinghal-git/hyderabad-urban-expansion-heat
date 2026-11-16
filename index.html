@@ -9,7 +9,65 @@
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
+/* SHARED PORTFOLIO NAVIGATION */
+.portfolio-nav {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 6%;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #e3e9e4;
+  box-shadow: 0 3px 12px rgba(30, 55, 40, 0.05);
+}
 
+.portfolio-brand {
+  color: #24483b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.portfolio-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.portfolio-links a {
+  padding: 9px 13px;
+  border-radius: 6px;
+  color: #40584b;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.portfolio-links a:hover,
+.portfolio-links a.active {
+  background: #315b49;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .portfolio-nav {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 13px 5%;
+  }
+
+  .portfolio-links {
+    justify-content: flex-start;
+  }
+}
   <style>
     .map-interpretation {
       max-width: 1250px;
