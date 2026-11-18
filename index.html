@@ -297,6 +297,53 @@
       }
     }
 
+    .layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 0.9fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* About analysis spans the entire page width */
+.analysis-intro {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Map occupies the left column */
+.map-column {
+  grid-column: 1;
+  min-width: 0;
+}
+
+/* Sidebar occupies the right column */
+.side-panel {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  position: sticky;
+  top: 16px;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-intro,
+  .map-column,
+  .side-panel {
+    grid-column: 1;
+  }
+
+  .side-panel {
+    position: static;
+  }
+}
   </style>
 </head>
 
@@ -864,7 +911,26 @@
   </section>
     <!-- INTERACTIVE MAP -->
 
-  <main class="layout">
+  <!-- INTERACTIVE MAP -->
+
+<main class="layout">
+
+  <!-- ABOUT THE ANALYSIS: FULL WIDTH -->
+
+  <div class="analysis-intro">
+    <h2>About the analysis</h2>
+    <p>
+      Annual Dynamic World classifications for January–April were
+      compared within a consistent GHMC study boundary.
+      Land surface temperature (LST) is a satellite-derived
+      surface measure, not air temperature.
+    </p>
+  </div>
+
+
+  <!-- LEFT: MAP -->
+
+  <div class="map-column">
 
     <section class="map-panel" aria-label="Interactive map">
 
@@ -873,20 +939,26 @@
         <label for="layer-select">Map layer</label>
 
         <select id="layer-select">
-
           <option value="built">New built-up area (%)</option>
-
           <option value="trees">Tree-classified loss (%)</option>
-
           <option value="lst">Land surface temperature change (°C)</option>
-
         </select>
 
       </div>
 
+      <div class="map-stage">
 
-      <div id="map"></div>
+        <div id="map"></div>
 
+        <div class="map-guide-overlay">
+          <h3>How to read this map</h3>
+          <p id="layer-description">
+            The share of each grid cell classified as new built-up area
+            between 2018 and 2025.
+          </p>
+        </div>
+
+      </div>
 
       <div class="map-footer">
         Click a grid cell to inspect its values.
@@ -895,71 +967,46 @@
 
     </section>
 
+  </div>
 
-    <!-- MAP GUIDE -->
 
-    <aside class="side-panel">
+  <!-- RIGHT: LEGEND AND MAP INSIGHTS -->
 
-      <div class="panel-kicker">MAP GUIDE</div>
+  <aside class="side-panel">
 
+    <div class="legend-panel">
+
+      <div class="panel-kicker">MAP LEGEND</div>
       <h2 id="legend-title">New built-up area (%)</h2>
-
       <div id="legend" class="legend"></div>
 
+    </div>
 
-      <div class="note">
+    <div class="insight-panel">
 
-        <h3>How to read this map</h3>
+      <div class="panel-kicker">MAP INSIGHTS</div>
 
-        <p id="layer-description">
-          The share of each grid cell classified as new built-up area
-          between 2018 and 2025.
-        </p>
-
-      </div>
-
-
-      <div class="note">
-
-        <h3>About the analysis</h3>
-
-        <p>
-          Annual Dynamic World classifications for January–April were
-          compared within a consistent GHMC study boundary.
-          Land surface temperature (LST) is a satellite-derived
-          surface measure, not air temperature.
-        </p>
-
-      </div>
-
-
-      <div class="note caution">
-
+      <div class="interpretation-content">
         <h3>Interpretation</h3>
-
         <p>
           Dynamic World's "trees" class is not the same as legally
           or ecologically defined forest cover.
           Spatial associations do not establish causation.
         </p>
-
       </div>
 
-
       <div class="cell-card" id="cell-card">
-
         <h3>Selected grid cell</h3>
-
         <p class="muted">
           Select a grid cell on the map to see its measurements.
         </p>
-
       </div>
 
-    </aside>
+    </div>
 
-  </main>
+  </aside>
 
+</main>
 
   <!-- FOOTER -->
 
